@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  speed_php:
+    build: ./etc/docker/php-fpm
+    container_name: speed_php
+    networks:
+      - main
+    volumes:
+      - ./:/var/www/symfony:cached
+      - ./var/log/symfony:/var/www/symfony/var/log:cached
+    extra_hosts:
+      - "docker-host.localhost:127.0.0.1"
+
+  speed_nginx:
+    build: ./etc/docker/nginx
+    container_name: speed_nginx
+    ports:
+      - "80:80"
+    networks:
+      - main
+    volumes:
+      - ./var/log/nginx:/var/log/nginx:cached
+      - ./:/var/www/symfony:cached
+
+networks:
+  main:
+    ipam:
+      driver: default
+      config:
+        -   subnet: 172.18.18.0/24
