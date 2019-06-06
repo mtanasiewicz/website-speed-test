@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Message\Email\Infrastructure\EmailSender;
+namespace App\Message\Email\Domain\Service\EmailSender;
 
 use App\Message\Email\Domain\Model\Email;
-use App\Message\Email\Infrastructure\Adapter\MailerAdapter;
+use App\Shared\Exception\InfrastructureException;
 
 class EmailSender
 {
@@ -16,6 +16,9 @@ class EmailSender
         $this->mailer = $mailer;
     }
 
+    /**
+     * @throws InfrastructureException
+     */
     public function send(Email $email): void
     {
         $this->mailer->send($email);
