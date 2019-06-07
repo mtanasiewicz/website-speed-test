@@ -12,6 +12,6 @@ class InfoSectionFactory
 
     public function create(AllTimes $allTimes): Section
     {
-        return new Section(self::SECTION_TITLE, [$allTimes->getAllTimes()]);
+        return new Section(self::SECTION_TITLE, $allTimes->getAllTimes());
     }
 }

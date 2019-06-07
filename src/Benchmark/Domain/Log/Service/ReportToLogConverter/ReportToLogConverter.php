@@ -6,7 +6,7 @@ namespace App\Benchmark\Domain\Log\Service\ReportToLogConverter;
 use App\Benchmark\Domain\Report\Model\Report;
 use App\Benchmark\Domain\Report\Model\Section;
 use App\Benchmark\Domain\Report\Service\ReportConverter;
-use function array_walk;
+use function array_map;
 
 class ReportToLogConverter implements ReportConverter
 {
@@ -23,16 +23,10 @@ class ReportToLogConverter implements ReportConverter
 
     public function convert(Report $report): string
     {
-        $sections = $report->getSections();
+        $texts = array_map(function (Section $section) {
+            return $this->sectionConverter->convert($section);
+        }, $report->getSections());
 
-        $reportText = '';
-
-        array_walk($sections, function (Section $section) use (&$reportText) {
-            $reportText .= $this->sectionConverter->convert($section);
-
-            $reportText .= self::SECTION_SEPARATOR;
-        });
-
-        return $reportText;
+        return implode(self::SECTION_SEPARATOR, $texts);
     }
 }

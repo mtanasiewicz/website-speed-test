@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Domain\Report\Model;
 
-use Webmozart\Assert\Assert;
-
 class Section
 {
     /** @var string  */
@@ -15,7 +13,7 @@ class Section
 
     public function __construct(string $title, array $data)
     {
-        Assert::allIsInstanceOf($data, Data::class);
+//        Assert::allImplementsInterface($data, Data::class);
 
         $this->title = $title;
         $this->data = $data;

@@ -9,6 +9,6 @@ class DataConverter
 {
     public function covert(Data $data): string
     {
-        //TODO: convert data row to log text
+        return $data->getName() . ': ' . $data->getValue();
     }
 }

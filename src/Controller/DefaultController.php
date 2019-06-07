@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Benchmark\Domain\LoadingTime\Service\LoadingTimeFactory;
+use App\Benchmark\Application\CreateLoadingTimeBenchmarkCommand;
+use App\Benchmark\Application\CreateLoadingTimeBenchmarkHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
@@ -13,10 +13,19 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", methods={"GET"})
      */
-    public function index(LoadingTimeFactory $counter)
+    public function index(CreateLoadingTimeBenchmarkHandler $handler)
     {
-        $time = $counter->create('http://wp.pl');
+        $command = new CreateLoadingTimeBenchmarkCommand(
+            'http://www.wp.pl',
+            [
+                'http://www.onet.pl',
+                'http://www.yahoo.com',
+                'http://www.google.com'
+            ]
+            );
 
-        return new JsonResponse($time->getValue());
+        $result = $handler->handle($command);
+
+        var_dump($result);die;
     }
 }

@@ -5,7 +5,7 @@ namespace App\Benchmark\Domain\Log\Service\ReportToLogConverter;
 
 use App\Benchmark\Domain\Report\Model\Data;
 use App\Benchmark\Domain\Report\Model\Section;
-use function array_walk;
+use function array_map;
 
 class SectionConverter
 {
@@ -21,13 +21,14 @@ class SectionConverter
 
     public function convert(Section $section): string
     {
-        $sectionText = '';
+        $texts = array_map(function (Data $data) {
+            return $this->dataConverter->covert($data);
+        }, $section->getData());
 
-        array_walk($section->getData(), function (Data $data) use (&$sectionText) {
-            $sectionText .= $this->dataConverter->covert($data);
-            $sectionText .= self::DATA_SEPARATOR;
-        });
+        array_unshift($texts, $section->getTitle());
 
-        return $sectionText;
+        $endSectionSeparator = self::DATA_SEPARATOR . self::DATA_SEPARATOR;
+
+        return implode(self::DATA_SEPARATOR, $texts) . $endSectionSeparator;
     }
 }
