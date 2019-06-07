@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Domain\Report\Service\ReportToLogConverter;
+namespace App\Benchmark\Domain\Log\Service\ReportToLogConverter;
 
+use App\Benchmark\Domain\Log\Service\ReportConverter;
 use App\Benchmark\Domain\Report\Model\Report;
 use App\Benchmark\Domain\Report\Model\Section;
-use App\Benchmark\Domain\Report\Service\ReportConverter;
 use function array_walk;
 
 class ReportToLogConverter implements ReportConverter

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Domain\Report\Service\ReportToLogConverter;
+namespace App\Benchmark\Domain\Log\Service\ReportToLogConverter;
 
 use App\Benchmark\Domain\Report\Model\Data;
 use App\Benchmark\Domain\Report\Model\Section;

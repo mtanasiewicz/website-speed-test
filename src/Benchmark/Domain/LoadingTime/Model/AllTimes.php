@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Domain\LoadingTime\Model;
 
+use function array_unshift;
+
 class AllTimes
 {
     /**
@@ -40,5 +42,17 @@ class AllTimes
     public function getComparedTimes(): array
     {
         return $this->comparedTimes;
+    }
+
+    /**
+     * @return LoadingTime[]
+     */
+    public function getAllTimes(): array
+    {
+        $allTimes = $this->getComparedTimes();
+
+        array_unshift($allTimes, $this->getBenchmarkTime());
+
+        return $allTimes;
     }
 }
