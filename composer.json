@@ -11,7 +11,8 @@
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "4.3.*",
         "symfony/swiftmailer-bundle": "^3.2",
-        "symfony/yaml": "4.3.*"
+        "symfony/yaml": "4.3.*",
+        "webmozart/assert": "^1.4"
     },
     "config": {
         "preferred-install": {
