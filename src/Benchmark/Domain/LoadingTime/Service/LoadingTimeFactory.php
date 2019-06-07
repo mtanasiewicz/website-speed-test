@@ -22,7 +22,7 @@ class LoadingTimeFactory
         file($url);
         $timer->stop();
 
-        return new LoadingTime($url, $timer->getTimeInSeconds());
+        return new LoadingTime($url, $timer->getTimeInMilSeconds());
     }
 
     /**

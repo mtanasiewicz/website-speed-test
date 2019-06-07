@@ -31,12 +31,12 @@ class Timer
     /**
      * @throws TimerNotStoppedException
      */
-    public function getTimeInSeconds(): float
+    public function getTimeInMilSeconds(): float
     {
         if (0 === $this->stop) {
             throw new TimerNotStoppedException('Please stop the timer before reading the value');
         }
 
-        return $this->stop - $this->start;
+        return ($this->stop - $this->start) * 100;
     }
 }
