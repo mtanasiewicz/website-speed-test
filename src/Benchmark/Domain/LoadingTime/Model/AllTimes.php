@@ -7,17 +7,16 @@ use function array_unshift;
 
 class AllTimes
 {
-    /**
-     * @var LoadingTime|null
-     */
+    /** @var null|LoadingTime */
     private $benchmarkTime = null;
 
-    /**
-     * @var LoadingTime[]
-     */
-    private $comparedTimes;
+    /** @var null|LoadingTime[] */
+    private $comparedTimes = [];
 
-    public function getBenchmarkTime(): LoadingTime
+    /** @var array  */
+    private $failures = [];
+
+    public function getBenchmarkTime(): ?LoadingTime
     {
         return $this->benchmarkTime;
     }
@@ -42,6 +41,16 @@ class AllTimes
     public function getComparedTimes(): array
     {
         return $this->comparedTimes;
+    }
+
+    public function addFailure(string $url, string  $message): void
+    {
+        $this->failures[$url] = $message;
+    }
+
+    public function getFailures(): array
+    {
+        return $this->failures;
     }
 
     /**

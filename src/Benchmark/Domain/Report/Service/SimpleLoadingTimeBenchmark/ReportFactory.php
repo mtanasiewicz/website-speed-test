@@ -17,13 +17,18 @@ class ReportFactory implements ReportFactoryInterface
     /** @var FasterThanBenchmarkSectionFactory  */
     private $fasterThanBenchmarkSectionFactory;
 
+    /** @var FailureSectionFactory  */
+    private $failureSectionFactory;
+
     public function __construct(
         InfoSectionFactory $infoSectionFactory,
-        FasterThanBenchmarkSectionFactory $fasterThanBenchmarkSectionFactory
+        FasterThanBenchmarkSectionFactory $fasterThanBenchmarkSectionFactory,
+        FailureSectionFactory $failureSectionFactory
     )
     {
         $this->infoSectionFactory = $infoSectionFactory;
         $this->fasterThanBenchmarkSectionFactory = $fasterThanBenchmarkSectionFactory;
+        $this->failureSectionFactory = $failureSectionFactory;
     }
 
     public function create(AllTimes $allTimes): Report
@@ -32,6 +37,8 @@ class ReportFactory implements ReportFactoryInterface
 
         $fasterThanBenchmarkSection = $this->fasterThanBenchmarkSectionFactory->create($allTimes);
 
-        return new Report(self::REPORT_NAME, [$infoSection, $fasterThanBenchmarkSection]);
+        $failureSection = $this->failureSectionFactory->create($allTimes);
+
+        return new Report(self::REPORT_NAME, [$infoSection, $fasterThanBenchmarkSection, $failureSection]);
     }
 }

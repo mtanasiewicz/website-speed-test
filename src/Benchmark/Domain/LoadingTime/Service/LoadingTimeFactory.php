@@ -3,12 +3,22 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Domain\LoadingTime\Service;
 
+use App\Benchmark\Domain\Connection\WebConnector;
 use App\Benchmark\Domain\Exception\InvalidUrlException;
 use App\Benchmark\Domain\LoadingTime\Model\LoadingTime;
 use App\Shared\Exception\InvalidArgumentException;
 
 class LoadingTimeFactory
 {
+
+    /** @var WebConnector  */
+    private $connector;
+
+    public function __construct(WebConnector $connector)
+    {
+        $this->connector = $connector;
+    }
+
     /**
      * @return LoadingTime - time of website loading in seconds
      *
@@ -19,7 +29,7 @@ class LoadingTimeFactory
         $this->assertUrlIsValid($url);
 
         $timer = Timer::start();
-        file($url);
+        $this->connector->connect($url);
         $timer->stop();
 
         return new LoadingTime($url, $timer->getTimeInMilSeconds());

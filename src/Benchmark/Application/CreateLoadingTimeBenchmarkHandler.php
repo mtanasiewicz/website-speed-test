@@ -6,6 +6,7 @@ namespace App\Benchmark\Application;
 use App\Benchmark\Domain\LoadingTime\Service\AllTimesFactory;
 use App\Benchmark\Domain\Report\Service\ReportConverter;
 use App\Benchmark\Domain\Report\Service\ReportFactory;
+use App\Shared\Exception\InfrastructureException;
 use App\Shared\Exception\InvalidArgumentException;
 
 class CreateLoadingTimeBenchmarkHandler
@@ -33,6 +34,7 @@ class CreateLoadingTimeBenchmarkHandler
 
     /**
      * @throws InvalidArgumentException
+     * @throws InfrastructureException
      */
     public function handle(CreateLoadingTimeBenchmarkCommand $command): string
     {
