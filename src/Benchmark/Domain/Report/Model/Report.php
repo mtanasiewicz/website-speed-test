@@ -33,4 +33,9 @@ class Report
     {
         return $this->sections;
     }
+
+    public function addSection(Section $section): void
+    {
+        $this->sections[] = $section;
+    }
 }

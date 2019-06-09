@@ -7,7 +7,6 @@ use App\Benchmark\Domain\Report\Model\Section;
 
 class SectionConverter
 {
-
     public function convert(Section $section): array
     {
         $data = [

@@ -33,4 +33,9 @@ class Section
     {
         return $this->data;
     }
+
+    public function isEmpty(): bool
+    {
+        return count($this->data) === 0;
+    }
 }

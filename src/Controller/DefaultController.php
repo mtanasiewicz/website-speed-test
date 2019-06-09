@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Benchmark\Application\CreateLoadingTimeBenchmarkCommand;
 use App\Benchmark\Application\CreateLoadingTimeBenchmarkHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
@@ -26,6 +27,6 @@ class DefaultController extends AbstractController
 
         $result = $handler->handle($command);
 
-        var_dump($result);die;
+        return new Response($result);
     }
 }

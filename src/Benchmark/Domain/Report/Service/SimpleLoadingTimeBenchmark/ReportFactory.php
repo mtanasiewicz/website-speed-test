@@ -37,8 +37,13 @@ class ReportFactory implements ReportFactoryInterface
 
         $fasterThanBenchmarkSection = $this->fasterThanBenchmarkSectionFactory->create($allTimes);
 
-        $failureSection = $this->failureSectionFactory->create($allTimes);
+        $report = new Report(self::REPORT_NAME, [$infoSection, $fasterThanBenchmarkSection]);
 
-        return new Report(self::REPORT_NAME, [$infoSection, $fasterThanBenchmarkSection, $failureSection]);
+        $failureSection = $this->failureSectionFactory->create($allTimes);
+        if (!$failureSection->isEmpty()) {
+            $report->addSection($failureSection);
+        }
+
+        return $report;
     }
 }
