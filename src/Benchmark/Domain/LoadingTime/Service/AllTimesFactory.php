@@ -57,9 +57,7 @@ class AllTimesFactory
         } catch (Throwable $e) {
             $message = $e->getMessage();
 
-            throw new UnableToCreateBenchmarkException(
-                "Can not connect to $benchmarkUrl, benchmark impossible. $message"
-            );
+            throw new UnableToCreateBenchmarkException("$message Benchmark impossible.");
         }
     }
 }
