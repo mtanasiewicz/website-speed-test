@@ -10,7 +10,6 @@ use App\Shared\Exception\InvalidArgumentException;
 
 class LoadingTimeFactory
 {
-
     /** @var WebConnector  */
     private $connector;
 

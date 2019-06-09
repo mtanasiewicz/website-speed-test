@@ -8,7 +8,7 @@ use App\Benchmark\Domain\Report\Model\Section;
 
 class InfoSectionFactory
 {
-    private const SECTION_TITLE = 'Benchmark websites times: ';
+    private const SECTION_TITLE = 'Benchmark websites times in milliseconds: ';
 
     public function create(AllTimes $allTimes): Section
     {

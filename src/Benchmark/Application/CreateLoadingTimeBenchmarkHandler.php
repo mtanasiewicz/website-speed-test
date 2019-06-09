@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Application;
 
+use App\Benchmark\Domain\Conversion\Service\ReportConverter;
 use App\Benchmark\Domain\LoadingTime\Service\AllTimesFactory;
-use App\Benchmark\Domain\Report\Service\ReportConverter;
 use App\Benchmark\Domain\Report\Service\ReportFactory;
 use App\Shared\Exception\InfrastructureException;
 use App\Shared\Exception\InvalidArgumentException;
@@ -16,20 +16,19 @@ class CreateLoadingTimeBenchmarkHandler
 
     /** @var ReportFactory */
     private $reportFactory;
-    /**
-     * @var ReportConverter
-     */
+
+    /** @var ReportConverter  */
     private $reportConverter;
 
     public function __construct(
         AllTimesFactory $allTimesFactory,
         ReportFactory $reportFactory,
-        ReportConverter $reportConverter
+        ReportConverter $jsonConverter
     )
     {
         $this->allTimesFactory = $allTimesFactory;
         $this->reportFactory = $reportFactory;
-        $this->reportConverter = $reportConverter;
+        $this->reportConverter = $jsonConverter;
     }
 
     /**
