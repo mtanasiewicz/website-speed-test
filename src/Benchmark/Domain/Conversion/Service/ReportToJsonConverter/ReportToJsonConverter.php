@@ -6,15 +6,20 @@ namespace App\Benchmark\Domain\Conversion\Service\ReportToJsonConverter;
 use App\Benchmark\Domain\Conversion\Service\ReportConverter;
 use App\Benchmark\Domain\Report\Model\Report;
 use App\Benchmark\Domain\Report\Model\Section;
+use App\Shared\Infrastructure\Serializer\Serializer;
 
 class ReportToJsonConverter implements ReportConverter
 {
     /** @var SectionConverter  */
     private $sectionConverter;
 
-    public function __construct(SectionConverter $sectionConverter)
+    /** @var Serializer  */
+    private $serializer;
+
+    public function __construct(SectionConverter $sectionConverter, Serializer $serializer)
     {
         $this->sectionConverter = $sectionConverter;
+        $this->serializer = $serializer;
     }
 
     public function convert(Report $report): string
@@ -23,7 +28,6 @@ class ReportToJsonConverter implements ReportConverter
             return $this->sectionConverter->convert($section);
         }, $report->getSections());
 
-        return json_encode($data);
+        return $this->serializer->serialize($data);
     }
-
 }
