@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Domain\Report\Service\SimpleLoadingTimeBenchmark;
+namespace App\Benchmark\Domain\Report\Service\SimpleLoadingTimeReport;
 
 use App\Benchmark\Domain\LoadingTime\Model\AllTimes;
 use App\Benchmark\Domain\Report\Model\Section;
