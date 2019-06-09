@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Message\Email\Application\SendEmailCommand;
-use App\Message\Email\Application\SendEmailHandler;
+use App\Benchmark\Application\CreateLoadingTimeBenchmarkCommand;
+use App\Benchmark\Application\CreateLoadingTimeBenchmarkHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
@@ -14,12 +13,19 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", methods={"GET"})
      */
-    public function index(SendEmailHandler $sendEmailHandler)
+    public function index(CreateLoadingTimeBenchmarkHandler $handler)
     {
-        $command = new SendEmailCommand('user@example.com', 'some-subject', 'message-body');
+        $command = new CreateLoadingTimeBenchmarkCommand(
+            'http://www.wp.pl',
+            [
+                'http://www.onet.pl',
+                'http://www.yahoo.com',
+                'http://www.google.com'
+            ]
+            );
 
-        $sendEmailHandler->handle($command);
+        $result = $handler->handle($command);
 
-        return new JsonResponse('OK');
+        var_dump($result);die;
     }
 }

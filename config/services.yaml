@@ -30,3 +30,10 @@ services:
     App\Message\Email\Application\SendEmailHandler:
         arguments:
             $sender: '%env(MAILER_SENDER)%'
+
+    # Interface definitions:
+    App\Benchmark\Domain\Conversion\Service\ReportConverter $jsonConverter:
+        class: App\Benchmark\Domain\Conversion\Service\ReportToJsonConverter\ReportToJsonConverter
+
+    App\Benchmark\Domain\Conversion\Service\ReportConverter $logConverter:
+        class: App\Benchmark\Domain\Conversion\Service\ReportToLogConverter\ReportToLogConverter
