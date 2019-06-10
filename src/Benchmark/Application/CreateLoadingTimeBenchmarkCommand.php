@@ -12,8 +12,15 @@ class CreateLoadingTimeBenchmarkCommand
     /**
      * @var string
      */
+    private $email;
+    /**
+     * @var string
+     */
+    private $phoneNumber;
+    /**
+     * @var string
+     */
     private $benchmarkUrl;
-
     /**
      * @var array
      */
@@ -24,10 +31,28 @@ class CreateLoadingTimeBenchmarkCommand
      * @param string $benchmarkUrl
      * @param array $comparedUrls
      */
-    public function __construct(string $benchmarkUrl, array $comparedUrls)
+    public function __construct(string $email, string $phoneNumber, string $benchmarkUrl, array $comparedUrls)
     {
+        $this->email = $email;
+        $this->phoneNumber = $phoneNumber;
         $this->benchmarkUrl = $benchmarkUrl;
         $this->comparedUrls = $comparedUrls;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoneNumber(): string
+    {
+        return $this->phoneNumber;
     }
 
     /**

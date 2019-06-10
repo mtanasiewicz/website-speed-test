@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Domain\LoadingTime\Model;
 
+use function array_filter;
 use function array_unshift;
 
 /**
@@ -12,11 +13,11 @@ use function array_unshift;
 class AllTimes
 {
     /**
-     * @var null
+     * @var LoadingTime
      */
-    private $benchmarkTime = null;
+    private $benchmarkTime;
     /**
-     * @var array
+     * @var LoadingTime[]
      */
     private $comparedTimes = [];
     /**
@@ -25,9 +26,18 @@ class AllTimes
     private $failures = [];
 
     /**
-     * @return LoadingTime|null
+     * AllTimes constructor.
+     * @param LoadingTime $benchmarkTime
      */
-    public function getBenchmarkTime(): ?LoadingTime
+    public function __construct(LoadingTime $benchmarkTime)
+    {
+        $this->benchmarkTime = $benchmarkTime;
+    }
+
+    /**
+     * @return LoadingTime
+     */
+    public function getBenchmarkTime(): LoadingTime
     {
         return $this->benchmarkTime;
     }
@@ -38,18 +48,7 @@ class AllTimes
      */
     public function addComparedLoadingTime(LoadingTime $loadingTime): self
     {
-        $this->comparedTimes[$loadingTime->getName()] = $loadingTime;
-
-        return $this;
-    }
-
-    /**
-     * @param LoadingTime $loadingTime
-     * @return AllTimes
-     */
-    public function setBenchmarkTime(LoadingTime $loadingTime): self
-    {
-        $this->benchmarkTime = $loadingTime;
+        $this->comparedTimes[] = $loadingTime;
 
         return $this;
     }
@@ -89,5 +88,25 @@ class AllTimes
         array_unshift($allTimes, $this->getBenchmarkTime());
 
         return $allTimes;
+    }
+
+    /**
+     * @return LoadingTime[]
+     */
+    public function getTimesFasterThanBenchmark(): array
+    {
+        return array_filter($this->comparedTimes, function (LoadingTime $comparedTime) {
+            return $this->benchmarkTime->getValue() > $comparedTime->getValue();
+        });
+    }
+
+    /**
+     * @return LoadingTime[]
+     */
+    public function getTimesTwoTimesFasterThanBenchmark(): array
+    {
+        return array_filter($this->comparedTimes, function (LoadingTime $comparedTime) {
+            return $this->benchmarkTime->getValue() > ($comparedTime->getValue() / 2);
+        });
     }
 }

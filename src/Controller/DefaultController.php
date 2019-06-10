@@ -17,10 +17,12 @@ class DefaultController extends AbstractController
     public function index(CreateLoadingTimeBenchmarkHandler $handler)
     {
         $command = new CreateLoadingTimeBenchmarkCommand(
-            'http://www.wp.pl',
+            'user@example.com',
+            '+555555555',
+            'http://www.yahoo.com',
             [
                 'http://www.onet.pl',
-                'http://www.yahoo.com',
+                'http://www.wp.pl',
                 'http://www.google.com'
             ]
             );
