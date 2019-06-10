@@ -7,10 +7,18 @@ use App\Benchmark\Domain\LoadingTime\Model\AllTimes;
 use App\Benchmark\Domain\Report\Model\Failed;
 use App\Benchmark\Domain\Report\Model\Section;
 
+/**
+ * Class FailureSectionFactory
+ * @package App\Benchmark\Domain\Report\Service\SimpleLoadingTimeReport
+ */
 class FailureSectionFactory
 {
     private const SECTION_TITLE = 'FAILED BENCHMARKS:';
 
+    /**
+     * @param AllTimes $allTimes
+     * @return Section
+     */
     public function create(AllTimes $allTimes): Section
     {
         $failed = $allTimes->getFailures();

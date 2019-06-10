@@ -5,19 +5,32 @@ namespace App\Benchmark\Domain\LoadingTime\Service;
 
 use App\Benchmark\Domain\Exception\TimerNotStoppedException;
 
+/**
+ * Class Timer
+ * @package App\Benchmark\Domain\LoadingTime\Service
+ */
 class Timer
 {
-    /** @var float */
+    /**
+     * @var mixed
+     */
     private $start;
-
-    /** @var float */
+    /**
+     * @var int
+     */
     private $stop = 0;
 
+    /**
+     * Timer constructor.
+     */
     private function __construct()
     {
         $this->start = microtime(true);
     }
 
+    /**
+     * @return Timer
+     */
     public static function start(): self
     {
         return new self();
@@ -29,7 +42,7 @@ class Timer
     }
 
     /**
-     * @throws TimerNotStoppedException
+     * @return float
      */
     public function getTimeInMilSeconds(): float
     {

@@ -8,10 +8,18 @@ use App\Benchmark\Domain\LoadingTime\Model\LoadingTime;
 use App\Benchmark\Domain\Report\Model\Section;
 use function array_filter;
 
+/**
+ * Class FasterThanBenchmarkSectionFactory
+ * @package App\Benchmark\Domain\Report\Service\SimpleLoadingTimeReport
+ */
 class FasterThanBenchmarkSectionFactory
 {
     private const SECTION_NAME = 'Websites that have been faster than the benchmark website: ';
 
+    /**
+     * @param AllTimes $allTimes
+     * @return Section
+     */
     public function create(AllTimes $allTimes): Section
     {
         $benchmarkTime = $allTimes->getBenchmarkTime();

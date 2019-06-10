@@ -5,6 +5,10 @@ namespace App\Benchmark\Domain\Exception;
 
 use App\Shared\Exception\InfrastructureException;
 
+/**
+ * Class CouldNotConnectToUrlException
+ * @package App\Benchmark\Domain\Exception
+ */
 class CouldNotConnectToUrlException extends InfrastructureException
 {
 }

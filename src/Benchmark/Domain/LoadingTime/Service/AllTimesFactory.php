@@ -5,31 +5,49 @@ namespace App\Benchmark\Domain\LoadingTime\Service;
 
 use App\Benchmark\Domain\Exception\UnableToCreateBenchmarkException;
 use App\Benchmark\Domain\LoadingTime\Model\AllTimes;
+use App\Benchmark\Domain\LoadingTime\Model\LoadingTime;
 use Throwable;
 
+/**
+ * Class AllTimesFactory
+ * @package App\Benchmark\Domain\LoadingTime\Service
+ */
 class AllTimesFactory
 {
-    /** @var LoadingTimeFactory  */
+    /**
+     * @var LoadingTimeFactory
+     */
     private $loadingTimeFactory;
 
+    /**
+     * AllTimesFactory constructor.
+     * @param LoadingTimeFactory $loadingTimeFactory
+     */
     public function __construct(LoadingTimeFactory $loadingTimeFactory)
     {
         $this->loadingTimeFactory = $loadingTimeFactory;
     }
 
     /**
+     * @param string $benchmarkUrl
+     * @param array $comparedUrls
+     * @return AllTimes
      * @throws UnableToCreateBenchmarkException
      */
     public function create(string $benchmarkUrl, array $comparedUrls): AllTimes
     {
-        $allTimes = new AllTimes();
+        $benchmark = $this->createLoadingTimeForBenchmarkWebsite($benchmarkUrl);
+        $allTimes = new AllTimes($benchmark);
 
-        $this->createLoadingTimeForBenchmarkWebsite($benchmarkUrl, $allTimes);
         $this->createLoadingTimesForComparedWebsites($comparedUrls, $allTimes);
 
         return $allTimes;
     }
 
+    /**
+     * @param array $comparedUrls
+     * @param AllTimes $allTimes
+     */
     private function createLoadingTimesForComparedWebsites(array $comparedUrls, AllTimes $allTimes): void
     {
         foreach ($comparedUrls as $url) {
@@ -46,14 +64,14 @@ class AllTimesFactory
     }
 
     /**
+     * @param string $benchmarkUrl
+     * @return LoadingTime
      * @throws UnableToCreateBenchmarkException
      */
-    private function createLoadingTimeForBenchmarkWebsite(string $benchmarkUrl, AllTimes $allTimes): void
+    private function createLoadingTimeForBenchmarkWebsite(string $benchmarkUrl): LoadingTime
     {
         try {
-            $benchmarkTime = $this->loadingTimeFactory->create($benchmarkUrl);
-
-            $allTimes->setBenchmarkTime($benchmarkTime);
+            return $this->loadingTimeFactory->create($benchmarkUrl);
         } catch (Throwable $e) {
             $message = $e->getMessage();
 
