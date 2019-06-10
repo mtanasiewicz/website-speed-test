@@ -5,22 +5,37 @@ namespace App\Benchmark\Domain\LoadingTime\Model;
 
 use function array_unshift;
 
+/**
+ * Class AllTimes
+ * @package App\Benchmark\Domain\LoadingTime\Model
+ */
 class AllTimes
 {
-    /** @var null|LoadingTime */
+    /**
+     * @var null
+     */
     private $benchmarkTime = null;
-
-    /** @var null|LoadingTime[] */
+    /**
+     * @var array
+     */
     private $comparedTimes = [];
-
-    /** @var array  */
+    /**
+     * @var array
+     */
     private $failures = [];
 
+    /**
+     * @return LoadingTime|null
+     */
     public function getBenchmarkTime(): ?LoadingTime
     {
         return $this->benchmarkTime;
     }
 
+    /**
+     * @param LoadingTime $loadingTime
+     * @return AllTimes
+     */
     public function addComparedLoadingTime(LoadingTime $loadingTime): self
     {
         $this->comparedTimes[$loadingTime->getName()] = $loadingTime;
@@ -28,6 +43,10 @@ class AllTimes
         return $this;
     }
 
+    /**
+     * @param LoadingTime $loadingTime
+     * @return AllTimes
+     */
     public function setBenchmarkTime(LoadingTime $loadingTime): self
     {
         $this->benchmarkTime = $loadingTime;
@@ -43,11 +62,18 @@ class AllTimes
         return $this->comparedTimes;
     }
 
+    /**
+     * @param string $url
+     * @param string $message
+     */
     public function addFailure(string $url, string  $message): void
     {
         $this->failures[$url] = $message;
     }
 
+    /**
+     * @return array
+     */
     public function getFailures(): array
     {
         return $this->failures;

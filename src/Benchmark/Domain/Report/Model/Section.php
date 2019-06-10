@@ -5,12 +5,19 @@ namespace App\Benchmark\Domain\Report\Model;
 
 use Webmozart\Assert\Assert;
 
+/**
+ * Class Section
+ * @package App\Benchmark\Domain\Report\Model
+ */
 class Section
 {
-    /** @var string  */
+    /**
+     * @var string
+     */
     private $title;
-
-    /** @var array|Data[] */
+    /**
+     * @var Data[]
+     */
     private $data;
 
     public function __construct(string $title, array $data)
@@ -21,6 +28,9 @@ class Section
         $this->data = $data;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle(): string
     {
         return $this->title;
@@ -34,6 +44,9 @@ class Section
         return $this->data;
     }
 
+    /**
+     * @return bool
+     */
     public function isEmpty(): bool
     {
         return count($this->data) === 0;

@@ -7,19 +7,32 @@ use App\Benchmark\Domain\Conversion\Service\ReportConverter;
 use App\Benchmark\Domain\LoadingTime\Service\AllTimesFactory;
 use App\Benchmark\Domain\Report\Service\ReportFactory;
 use App\Shared\Exception\InfrastructureException;
-use App\Shared\Exception\InvalidArgumentException;
 
+/**
+ * Class CreateLoadingTimeBenchmarkHandler
+ * @package App\Benchmark\Application
+ */
 class CreateLoadingTimeBenchmarkHandler
 {
-    /** @var AllTimesFactory */
+    /**
+     * @var AllTimesFactory
+     */
     private $allTimesFactory;
-
-    /** @var ReportFactory */
+    /**
+     * @var ReportFactory
+     */
     private $reportFactory;
-
-    /** @var ReportConverter  */
+    /**
+     * @var ReportConverter
+     */
     private $reportConverter;
 
+    /**
+     * CreateLoadingTimeBenchmarkHandler constructor.
+     * @param AllTimesFactory $allTimesFactory
+     * @param ReportFactory $reportFactory
+     * @param ReportConverter $jsonConverter
+     */
     public function __construct(
         AllTimesFactory $allTimesFactory,
         ReportFactory $reportFactory,
@@ -32,7 +45,8 @@ class CreateLoadingTimeBenchmarkHandler
     }
 
     /**
-     * @throws InvalidArgumentException
+     * @param CreateLoadingTimeBenchmarkCommand $command
+     * @return string
      * @throws InfrastructureException
      */
     public function handle(CreateLoadingTimeBenchmarkCommand $command): string

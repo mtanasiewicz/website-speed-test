@@ -7,18 +7,32 @@ use App\Benchmark\Domain\Report\Model\Data;
 use App\Benchmark\Domain\Report\Model\Section;
 use function array_map;
 
+/**
+ * Class SectionConverter
+ * @package App\Benchmark\Domain\Conversion\Service\ReportToLogConverter
+ */
 class SectionConverter
 {
     private const DATA_SEPARATOR = "\r\n";
 
-    /** @var DataConverter  */
+    /**
+     * @var DataConverter
+     */
     private $dataConverter;
 
+    /**
+     * SectionConverter constructor.
+     * @param DataConverter $dataConverter
+     */
     public function __construct(DataConverter $dataConverter)
     {
         $this->dataConverter = $dataConverter;
     }
 
+    /**
+     * @param Section $section
+     * @return string
+     */
     public function convert(Section $section): string
     {
         $texts = array_map(function (Data $data) {

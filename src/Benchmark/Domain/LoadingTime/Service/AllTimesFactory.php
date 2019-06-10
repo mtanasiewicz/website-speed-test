@@ -7,17 +7,30 @@ use App\Benchmark\Domain\Exception\UnableToCreateBenchmarkException;
 use App\Benchmark\Domain\LoadingTime\Model\AllTimes;
 use Throwable;
 
+/**
+ * Class AllTimesFactory
+ * @package App\Benchmark\Domain\LoadingTime\Service
+ */
 class AllTimesFactory
 {
-    /** @var LoadingTimeFactory  */
+    /**
+     * @var LoadingTimeFactory
+     */
     private $loadingTimeFactory;
 
+    /**
+     * AllTimesFactory constructor.
+     * @param LoadingTimeFactory $loadingTimeFactory
+     */
     public function __construct(LoadingTimeFactory $loadingTimeFactory)
     {
         $this->loadingTimeFactory = $loadingTimeFactory;
     }
 
     /**
+     * @param string $benchmarkUrl
+     * @param array $comparedUrls
+     * @return AllTimes
      * @throws UnableToCreateBenchmarkException
      */
     public function create(string $benchmarkUrl, array $comparedUrls): AllTimes
@@ -30,6 +43,10 @@ class AllTimesFactory
         return $allTimes;
     }
 
+    /**
+     * @param array $comparedUrls
+     * @param AllTimes $allTimes
+     */
     private function createLoadingTimesForComparedWebsites(array $comparedUrls, AllTimes $allTimes): void
     {
         foreach ($comparedUrls as $url) {
@@ -46,6 +63,8 @@ class AllTimesFactory
     }
 
     /**
+     * @param string $benchmarkUrl
+     * @param AllTimes $allTimes
      * @throws UnableToCreateBenchmarkException
      */
     private function createLoadingTimeForBenchmarkWebsite(string $benchmarkUrl, AllTimes $allTimes): void

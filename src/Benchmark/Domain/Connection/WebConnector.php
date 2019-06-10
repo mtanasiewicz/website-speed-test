@@ -5,13 +5,17 @@ namespace App\Benchmark\Domain\Connection;
 
 use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;
 use App\Benchmark\Domain\Exception\InvalidUrlException;
-use App\Shared\Exception\InvalidArgumentException;
 
+/**
+ * Class WebConnector
+ * @package App\Benchmark\Domain\Connection
+ */
 class WebConnector
 {
     private const TIMEOUT = 20;
 
     /**
+     * @param string $url
      * @throws CouldNotConnectToUrlException
      */
     public function connect(string $url): void
@@ -33,7 +37,7 @@ class WebConnector
     }
 
     /**
-     * @throws InvalidArgumentException
+     * @param string $url
      */
     private function assertUrlIsValid(string $url): void
     {

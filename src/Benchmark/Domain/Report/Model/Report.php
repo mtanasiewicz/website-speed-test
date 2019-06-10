@@ -5,12 +5,19 @@ namespace App\Benchmark\Domain\Report\Model;
 
 use Webmozart\Assert\Assert;
 
+/**
+ * Class Report
+ * @package App\Benchmark\Domain\Report\Model
+ */
 class Report
 {
-    /** @var string  */
+    /**
+     * @var string
+     */
     private $name;
-
-    /** @var array|Section[] */
+    /**
+     * @var Section[]
+     */
     private $sections;
 
     public function __construct(string $name, array $sections)
@@ -21,6 +28,9 @@ class Report
         $this->name = $name;
     }
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return $this->name;
@@ -34,6 +44,9 @@ class Report
         return $this->sections;
     }
 
+    /**
+     * @param Section $section
+     */
     public function addSection(Section $section): void
     {
         $this->sections[] = $section;
