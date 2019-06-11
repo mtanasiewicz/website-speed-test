@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Domain\Conversion\Service\ReportToLogConverter;
+namespace App\Benchmark\Infrastructure\Logger\Conversion\ReportToLogConverter;
 
-use App\Benchmark\Domain\Conversion\Service\ReportConverter;
 use App\Benchmark\Domain\Report\Model\Report;
 use App\Benchmark\Domain\Report\Model\Section;
+use App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter;
 use function array_map;
 
 /**

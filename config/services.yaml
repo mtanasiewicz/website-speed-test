@@ -32,8 +32,13 @@ services:
             $sender: '%env(MAILER_SENDER)%'
 
     # Interface definitions:
-    App\Benchmark\Domain\Conversion\Service\ReportConverter $jsonConverter:
-        class: App\Benchmark\Domain\Conversion\Service\ReportToJsonConverter\ReportToJsonConverter
+    App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter $jsonConverter:
+        class: App\Benchmark\Infrastructure\Logger\Conversion\ReportToJsonConverter\ReportToJsonConverter
 
-    App\Benchmark\Domain\Conversion\Service\ReportConverter $logConverter:
-        class: App\Benchmark\Domain\Conversion\Service\ReportToLogConverter\ReportToLogConverter
+    App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter $logConverter:
+        class: App\Benchmark\Infrastructure\Logger\Conversion\ReportToLogConverter\ReportToLogConverter
+
+    App\Shared\Infrastructure\Logger\Logger $txtLogger:
+        class: App\Shared\Infrastructure\Logger\TxtLogger\TxtLogger
+        arguments:
+            $logPath: '%kernel.root_dir%/../var/log/benchmark/log.txt'
