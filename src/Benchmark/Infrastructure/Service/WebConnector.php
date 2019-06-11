@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Infrastructure\Service;
 
-use App\Benchmark\Domain\Connection\Service\WebConnectorInterface;
+use App\Benchmark\Domain\Connection\WebConnectorInterface;
 use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;
 use App\Benchmark\Domain\Exception\InvalidUrlException;
 
