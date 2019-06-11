@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Infrastructure\Service;
+namespace App\Benchmark\Infrastructure;
 
 use App\Benchmark\Domain\Connection\WebConnectorInterface;
 use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;

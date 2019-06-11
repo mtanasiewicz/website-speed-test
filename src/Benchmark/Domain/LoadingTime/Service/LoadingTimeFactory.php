@@ -5,7 +5,7 @@ namespace App\Benchmark\Domain\LoadingTime\Service;
 
 use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;
 use App\Benchmark\Domain\LoadingTime\Model\LoadingTime;
-use App\Benchmark\Infrastructure\Service\WebConnector;
+use App\Benchmark\Infrastructure\WebConnector;
 
 /**
  * Class LoadingTimeFactory
