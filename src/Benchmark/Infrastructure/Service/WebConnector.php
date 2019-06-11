@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Domain\Connection\Service;
+namespace App\Benchmark\Infrastructure\Service;
 
+use App\Benchmark\Domain\Connection\Service\WebConnectorInterface;
 use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;
 use App\Benchmark\Domain\Exception\InvalidUrlException;
 
@@ -10,7 +11,7 @@ use App\Benchmark\Domain\Exception\InvalidUrlException;
  * Class WebConnector
  * @package App\Benchmark\Domain\Connection
  */
-class WebConnector
+class WebConnector implements WebConnectorInterface
 {
     private const TIMEOUT = 20;
 
