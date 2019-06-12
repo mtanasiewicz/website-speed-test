@@ -27,6 +27,10 @@ class ReportFactory implements ReportFactoryInterface
      * @var FailureSectionFactory
      */
     private $failureSectionFactory;
+    /**
+     * @var DateSectionFactory
+     */
+    private $dateSectionFactory;
 
     /**
      * ReportFactory constructor.
@@ -37,12 +41,14 @@ class ReportFactory implements ReportFactoryInterface
     public function __construct(
         InfoSectionFactory $infoSectionFactory,
         FasterThanBenchmarkSectionFactory $fasterThanBenchmarkSectionFactory,
-        FailureSectionFactory $failureSectionFactory
+        FailureSectionFactory $failureSectionFactory,
+        DateSectionFactory $dateSectionFactory
     )
     {
         $this->infoSectionFactory = $infoSectionFactory;
         $this->fasterThanBenchmarkSectionFactory = $fasterThanBenchmarkSectionFactory;
         $this->failureSectionFactory = $failureSectionFactory;
+        $this->dateSectionFactory = $dateSectionFactory;
     }
 
     /**
@@ -61,6 +67,9 @@ class ReportFactory implements ReportFactoryInterface
         if (!$failureSection->isEmpty()) {
             $report->addSection($failureSection);
         }
+
+        $dateSection = $this->dateSectionFactory->create($report->getCreatedAt());
+        $report->addSection($dateSection);
 
         return $report;
     }

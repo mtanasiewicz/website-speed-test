@@ -43,6 +43,7 @@ class CreateLoadingTimeBenchmarkHandler
      * @param ReportFactory $reportFactory
      * @param ReportConverter $jsonConverter
      * @param Notificator $notificator
+     * @param ReportLogger $reportLogger
      */
     public function __construct(
         AllTimesFactory $allTimesFactory,
