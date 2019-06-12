@@ -7,6 +7,7 @@
         "ext-curl": "*",
         "ext-iconv": "*",
         "ext-json": "*",
+        "ext-xmlwriter": "*",
         "jms/serializer-bundle": "^3.3",
         "monolog/monolog": "^1.24",
         "sensio/framework-extra-bundle": "^5.3",
@@ -63,5 +64,8 @@
             "allow-contrib": false,
             "require": "4.3.*"
         }
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "4.3.*"
     }
 }
