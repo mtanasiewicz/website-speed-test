@@ -12,11 +12,11 @@ use App\Benchmark\Domain\Exception\TimerNotStoppedException;
 class Timer
 {
     /**
-     * @var mixed
+     * @var float
      */
     private $start;
     /**
-     * @var int
+     * @var float
      */
     private $stop = 0;
 
@@ -51,5 +51,21 @@ class Timer
         }
 
         return ($this->stop - $this->start) * 100;
+    }
+
+    /**
+     * @return float
+     */
+    public function getStart(): float
+    {
+        return $this->start;
+    }
+
+    /**
+     * @return float
+     */
+    public function getStop(): float
+    {
+        return $this->stop;
     }
 }
