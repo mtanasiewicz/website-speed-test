@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Domain\Report\Model;
 
+use DateTime;
 use Webmozart\Assert\Assert;
 
 /**
@@ -19,6 +20,10 @@ class Report
      * @var Section[]
      */
     private $sections;
+    /**
+     * @var DateTime
+     */
+    private $createdAt;
 
     public function __construct(string $name, array $sections)
     {
@@ -26,6 +31,7 @@ class Report
 
         $this->sections = $sections;
         $this->name = $name;
+        $this->createdAt = new DateTime();
     }
 
     /**
@@ -50,5 +56,13 @@ class Report
     public function addSection(Section $section): void
     {
         $this->sections[] = $section;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getCreatedAt(): DateTime
+    {
+        return $this->createdAt;
     }
 }
