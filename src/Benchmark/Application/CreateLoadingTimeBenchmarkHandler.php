@@ -4,9 +4,10 @@ declare(strict_types=1);
 namespace App\Benchmark\Application;
 
 use App\Benchmark\Application\Service\Notificator;
-use App\Benchmark\Domain\Conversion\Service\ReportConverter;
 use App\Benchmark\Domain\LoadingTime\Service\AllTimesFactory;
+use App\Benchmark\Domain\Logger\ReportLogger;
 use App\Benchmark\Domain\Report\Service\ReportFactory;
+use App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter;
 use App\Shared\Exception\InfrastructureException;
 
 /**
@@ -31,6 +32,10 @@ class CreateLoadingTimeBenchmarkHandler
      * @var Notificator
      */
     private $notificator;
+    /**
+     * @var ReportLogger
+     */
+    private $reportLogger;
 
     /**
      * CreateLoadingTimeBenchmarkHandler constructor.
@@ -38,18 +43,21 @@ class CreateLoadingTimeBenchmarkHandler
      * @param ReportFactory $reportFactory
      * @param ReportConverter $jsonConverter
      * @param Notificator $notificator
+     * @param ReportLogger $reportLogger
      */
     public function __construct(
         AllTimesFactory $allTimesFactory,
         ReportFactory $reportFactory,
         ReportConverter $jsonConverter,
-        Notificator $notificator
+        Notificator $notificator,
+        ReportLogger $reportLogger
     )
     {
         $this->allTimesFactory = $allTimesFactory;
         $this->reportFactory = $reportFactory;
         $this->reportConverter = $jsonConverter;
         $this->notificator = $notificator;
+        $this->reportLogger = $reportLogger;
     }
 
     /**
@@ -65,6 +73,8 @@ class CreateLoadingTimeBenchmarkHandler
         $this->notificator->notifyAboutFasterWebsites($command->getEmail(), $command->getPhoneNumber(), $allTimes);
 
         $report = $this->reportFactory->create($allTimes);
+
+        $this->reportLogger->log($report);
 
         return $this->reportConverter->convert($report);
     }

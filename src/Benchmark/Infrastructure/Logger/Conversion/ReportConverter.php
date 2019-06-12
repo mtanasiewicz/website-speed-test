@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Domain\Conversion\Service;
+namespace App\Benchmark\Infrastructure\Logger\Conversion;
 
 use App\Benchmark\Domain\Report\Model\Report;
 
