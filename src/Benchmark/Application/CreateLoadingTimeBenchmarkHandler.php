@@ -5,9 +5,9 @@ namespace App\Benchmark\Application;
 
 use App\Benchmark\Application\Helper\Notificator;
 use App\Benchmark\Domain\LoadingTime\Service\AllTimesFactory;
-use App\Benchmark\Domain\Logger\ReportLogger;
 use App\Benchmark\Domain\Report\Service\ReportFactory;
 use App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter;
+use App\Benchmark\Infrastructure\Logger\ReportLoggerInterface;
 use App\Shared\Exception\InfrastructureException;
 
 /**
@@ -33,7 +33,7 @@ class CreateLoadingTimeBenchmarkHandler
      */
     private $notificator;
     /**
-     * @var ReportLogger
+     * @var ReportLoggerInterface
      */
     private $reportLogger;
 
@@ -43,14 +43,14 @@ class CreateLoadingTimeBenchmarkHandler
      * @param ReportFactory $reportFactory
      * @param ReportConverter $jsonConverter
      * @param Notificator $notificator
-     * @param ReportLogger $reportLogger
+     * @param ReportLoggerInterface $reportLogger
      */
     public function __construct(
         AllTimesFactory $allTimesFactory,
         ReportFactory $reportFactory,
         ReportConverter $jsonConverter,
         Notificator $notificator,
-        ReportLogger $reportLogger
+        ReportLoggerInterface $reportLogger
     )
     {
         $this->allTimesFactory = $allTimesFactory;

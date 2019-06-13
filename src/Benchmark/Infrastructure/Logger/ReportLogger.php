@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Infrastructure\Logger;
 
-use App\Benchmark\Domain\Logger\ReportLogger as ReportLoggerInterface;
 use App\Benchmark\Domain\Report\Model\Report;
 use App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter;
 use App\Shared\Infrastructure\Logger\Logger;
