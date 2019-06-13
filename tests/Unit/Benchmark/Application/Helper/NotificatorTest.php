@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Benchmark\Application;
 
+use App\Benchmark\Application\Helper\Notificator;
 use App\Benchmark\Domain\LoadingTime\Model\AllTimes;
 use App\Benchmark\Domain\LoadingTime\Model\LoadingTime;
-use App\Benchmark\Infrastructure\Notification\Notificator;
 use App\Message\Email\Application\SendEmailCommand;
 use App\Message\Email\Application\SendEmailHandler;
 use App\Message\Sms\Application\SendSmsCommand;

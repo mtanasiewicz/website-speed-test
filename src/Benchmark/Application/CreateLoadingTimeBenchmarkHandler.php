@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Application;
 
+use App\Benchmark\Application\Helper\Notificator;
 use App\Benchmark\Domain\LoadingTime\Service\AllTimesFactory;
 use App\Benchmark\Domain\Logger\ReportLogger;
 use App\Benchmark\Domain\Report\Service\ReportFactory;
 use App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter;
-use App\Benchmark\Infrastructure\Notification\NotificatorInterface;
 use App\Shared\Exception\InfrastructureException;
 
 /**
@@ -29,7 +29,7 @@ class CreateLoadingTimeBenchmarkHandler
      */
     private $reportConverter;
     /**
-     * @var NotificatorInterface
+     * @var Notificator
      */
     private $notificator;
     /**
@@ -42,14 +42,14 @@ class CreateLoadingTimeBenchmarkHandler
      * @param AllTimesFactory $allTimesFactory
      * @param ReportFactory $reportFactory
      * @param ReportConverter $jsonConverter
-     * @param NotificatorInterface $notificator
+     * @param Notificator $notificator
      * @param ReportLogger $reportLogger
      */
     public function __construct(
         AllTimesFactory $allTimesFactory,
         ReportFactory $reportFactory,
         ReportConverter $jsonConverter,
-        NotificatorInterface $notificator,
+        Notificator $notificator,
         ReportLogger $reportLogger
     )
     {
