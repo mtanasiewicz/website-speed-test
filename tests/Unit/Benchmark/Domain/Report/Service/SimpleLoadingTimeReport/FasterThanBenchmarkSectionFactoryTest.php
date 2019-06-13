@@ -30,6 +30,7 @@ class FasterThanBenchmarkSectionFactoryTest extends UnitTestBase
         $data = $fasterThanBenchmarkSection->getData();
 
         $this->assertSame('faster1', $data[0]->getName());
+        $this->assertSame('faster2', $data[1]->getName());
         $this->assertEquals(4.0, $data[0]->getValue());
         $this->assertEquals(4.99, $data[1]->getValue());
         $this->assertCount(2, $data);
