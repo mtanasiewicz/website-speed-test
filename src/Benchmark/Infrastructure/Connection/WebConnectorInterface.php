@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Domain\Connection;
+namespace App\Benchmark\Infrastructure\Connection;
 
 
 use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;

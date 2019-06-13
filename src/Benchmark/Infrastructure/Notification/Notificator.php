@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Application\Service;
+namespace App\Benchmark\Infrastructure\Notification;
 
+use App\Benchmark\Application\Notification\NotificatorInterface;
 use App\Benchmark\Domain\LoadingTime\Model\AllTimes;
 use App\Message\Email\Application\SendEmailCommand;
 use App\Message\Email\Application\SendEmailHandler;
@@ -10,7 +11,7 @@ use App\Message\Sms\Application\SendSmsCommand;
 use App\Message\Sms\Application\SendSmsHandler;
 use App\Shared\Exception\InfrastructureException;
 
-class Notificator
+class Notificator implements NotificatorInterface
 {
     private const EMAIL_SUBJECT = 'Faster websites detected';
 

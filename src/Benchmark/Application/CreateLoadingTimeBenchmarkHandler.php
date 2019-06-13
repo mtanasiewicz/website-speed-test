@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Application;
 
-use App\Benchmark\Application\Service\Notificator;
+use App\Benchmark\Application\Notification\NotificatorInterface;
 use App\Benchmark\Domain\LoadingTime\Service\AllTimesFactory;
 use App\Benchmark\Domain\Logger\ReportLogger;
 use App\Benchmark\Domain\Report\Service\ReportFactory;
@@ -29,7 +29,7 @@ class CreateLoadingTimeBenchmarkHandler
      */
     private $reportConverter;
     /**
-     * @var Notificator
+     * @var NotificatorInterface
      */
     private $notificator;
     /**
@@ -42,14 +42,14 @@ class CreateLoadingTimeBenchmarkHandler
      * @param AllTimesFactory $allTimesFactory
      * @param ReportFactory $reportFactory
      * @param ReportConverter $jsonConverter
-     * @param Notificator $notificator
+     * @param NotificatorInterface $notificator
      * @param ReportLogger $reportLogger
      */
     public function __construct(
         AllTimesFactory $allTimesFactory,
         ReportFactory $reportFactory,
         ReportConverter $jsonConverter,
-        Notificator $notificator,
+        NotificatorInterface $notificator,
         ReportLogger $reportLogger
     )
     {

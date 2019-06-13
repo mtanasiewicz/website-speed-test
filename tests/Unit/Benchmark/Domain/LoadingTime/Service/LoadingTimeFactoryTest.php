@@ -5,7 +5,7 @@ namespace App\Tests\Unit\Benchmark\Domain\LoadingTime\Service;
 
 use App\Benchmark\Domain\LoadingTime\Model\LoadingTime;
 use App\Benchmark\Domain\LoadingTime\Service\LoadingTimeFactory;
-use App\Benchmark\Infrastructure\WebConnector;
+use App\Benchmark\Infrastructure\Connection\WebConnector;
 use App\Tests\Unit\UnitTestBase;
 
 class LoadingTimeFactoryTest extends UnitTestBase
