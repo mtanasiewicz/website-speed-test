@@ -13,7 +13,7 @@ use App\Benchmark\Domain\Report\Service\ReportFactory as ReportFactoryInterface;
  */
 class ReportFactory implements ReportFactoryInterface
 {
-    private const REPORT_NAME = 'WEBSITE LOADING TIME BENCHMARK';
+    public const REPORT_NAME = 'WEBSITE LOADING TIME BENCHMARK';
 
     /**
      * @var InfoSectionFactory
@@ -37,6 +37,7 @@ class ReportFactory implements ReportFactoryInterface
      * @param InfoSectionFactory $infoSectionFactory
      * @param FasterThanBenchmarkSectionFactory $fasterThanBenchmarkSectionFactory
      * @param FailureSectionFactory $failureSectionFactory
+     * @param DateSectionFactory $dateSectionFactory
      */
     public function __construct(
         InfoSectionFactory $infoSectionFactory,
