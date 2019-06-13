@@ -33,5 +33,6 @@ class DateSectionFactoryTest extends UnitTestBase
         $this->assertInstanceOf(ReportCreationDate::class, $data[0]);
         $this->assertSame($dateTime->format('Y-m-d H:i:s'), $data[0]->getValue());
         $this->assertSame('created_at', $data[0]->getName());
+        $this->assertSame(DateSectionFactory::SECTION_TITLE, $dateSection->getTitle());
     }
 }

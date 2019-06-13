@@ -40,5 +40,6 @@ class FailureSectionFactoryTest extends UnitTestBase
         $this->assertSame(self::MESSAGE, $data->getValue());
         $this->assertSame(self::FAILURE_URL, $data->getName());
         $this->assertCount(1, $failureSection->getData());
+        $this->assertSame(FailureSectionFactory::SECTION_TITLE, $failureSection->getTitle());
     }
 }

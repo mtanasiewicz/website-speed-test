@@ -34,6 +34,7 @@ class FasterThanBenchmarkSectionFactoryTest extends UnitTestBase
         $this->assertEquals(4.0, $data[0]->getValue());
         $this->assertEquals(4.99, $data[1]->getValue());
         $this->assertCount(2, $data);
+        $this->assertSame(FasterThanBenchmarkSectionFactory::SECTION_TITLE, $fasterThanBenchmarkSection->getTitle());
     }
 
     /**

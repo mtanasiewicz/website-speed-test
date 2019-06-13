@@ -38,6 +38,7 @@ class InfoSectionFactoryTest extends UnitTestBase
         $this->assertEquals(4.99, $data[2]->getValue());
         $this->assertEquals(5.01, $data[3]->getValue());
         $this->assertCount(4, $data);
+        $this->assertSame(InfoSectionFactory::SECTION_TITLE, $infoSection->getTitle());
     }
 
     /**
