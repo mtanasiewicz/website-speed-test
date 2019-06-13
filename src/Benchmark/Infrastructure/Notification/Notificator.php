@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Infrastructure\Notification;
 
-use App\Benchmark\Application\Notification\NotificatorInterface;
 use App\Benchmark\Domain\LoadingTime\Model\AllTimes;
 use App\Message\Email\Application\SendEmailCommand;
 use App\Message\Email\Application\SendEmailHandler;

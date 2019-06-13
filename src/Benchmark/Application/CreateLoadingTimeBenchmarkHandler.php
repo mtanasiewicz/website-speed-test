@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Application;
 
-use App\Benchmark\Application\Notification\NotificatorInterface;
 use App\Benchmark\Domain\LoadingTime\Service\AllTimesFactory;
 use App\Benchmark\Domain\Logger\ReportLogger;
 use App\Benchmark\Domain\Report\Service\ReportFactory;
 use App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter;
+use App\Benchmark\Infrastructure\Notification\NotificatorInterface;
 use App\Shared\Exception\InfrastructureException;
 
 /**

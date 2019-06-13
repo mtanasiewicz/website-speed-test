@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Application\Notification;
+namespace App\Benchmark\Infrastructure\Notification;
 
 use App\Benchmark\Domain\LoadingTime\Model\AllTimes;
 use App\Shared\Exception\InfrastructureException;
