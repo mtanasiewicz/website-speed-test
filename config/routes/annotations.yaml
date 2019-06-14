@@ -1,3 +1,8 @@
-controllers:
-    resource: ../../src/Controller/
+benchmark_controllers:
+    resource: ../../src/Benchmark/Ui/Http/Rest
+    type: annotation
+
+#TODO: Delete
+default_controller:
+    resource: ../../src/Controller
     type: annotation
