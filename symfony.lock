@@ -20,6 +20,9 @@
     "doctrine/event-manager": {
         "version": "v1.0.0"
     },
+    "doctrine/inflector": {
+        "version": "v1.3.0"
+    },
     "doctrine/instantiator": {
         "version": "1.2.0"
     },
@@ -34,6 +37,18 @@
     },
     "egulias/email-validator": {
         "version": "2.1.8"
+    },
+    "friendsofsymfony/rest-bundle": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "258300d52be6ad59b32a888d5ddafbf9638540ff"
+        },
+        "files": [
+            "config/packages/fos_rest.yaml"
+        ]
     },
     "hoa/compiler": {
         "version": "3.17.08.08"
@@ -176,6 +191,9 @@
             ".env"
         ]
     },
+    "symfony/form": {
+        "version": "v4.3.1"
+    },
     "symfony/framework-bundle": {
         "version": "4.2",
         "recipe": {
@@ -201,6 +219,12 @@
     "symfony/http-kernel": {
         "version": "v4.3.0"
     },
+    "symfony/inflector": {
+        "version": "v4.3.1"
+    },
+    "symfony/intl": {
+        "version": "v4.3.1"
+    },
     "symfony/mime": {
         "version": "v4.3.0"
     },
@@ -221,6 +245,9 @@
             "config/packages/test/monolog.yaml"
         ]
     },
+    "symfony/options-resolver": {
+        "version": "v4.3.1"
+    },
     "symfony/phpunit-bridge": {
         "version": "4.3",
         "recipe": {
@@ -237,6 +264,9 @@
             "tests/.gitignore"
         ]
     },
+    "symfony/polyfill-intl-icu": {
+        "version": "v1.11.0"
+    },
     "symfony/polyfill-intl-idn": {
         "version": "v1.11.0"
     },
@@ -248,6 +278,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.11.0"
+    },
+    "symfony/property-access": {
+        "version": "v4.3.1"
     },
     "symfony/routing": {
         "version": "4.2",
@@ -263,6 +296,9 @@
             "config/packages/test/routing.yaml",
             "config/routes.yaml"
         ]
+    },
+    "symfony/security-core": {
+        "version": "v4.3.1"
     },
     "symfony/service-contracts": {
         "version": "v1.1.2"
@@ -281,6 +317,9 @@
             "config/packages/test/swiftmailer.yaml"
         ]
     },
+    "symfony/templating": {
+        "version": "v4.3.1"
+    },
     "symfony/var-exporter": {
         "version": "v4.3.0"
     },
@@ -289,5 +328,11 @@
     },
     "webmozart/assert": {
         "version": "1.4.0"
+    },
+    "willdurand/jsonp-callback-validator": {
+        "version": "v1.1.0"
+    },
+    "willdurand/negotiation": {
+        "version": "v2.3.1"
     }
 }
