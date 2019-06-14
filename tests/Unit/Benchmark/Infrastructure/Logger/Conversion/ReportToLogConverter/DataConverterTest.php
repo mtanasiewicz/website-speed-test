@@ -16,7 +16,7 @@ class DataConverterTest extends UnitTestBase
     {
         $data = new LoadingTime(self::URL, self::VALUE);
 
-        $result = (new DataConverter())->covert($data);
+        $result = (new DataConverter())->convert($data);
 
         $this->assertSame(self::URL . ': ' . self::VALUE, $result);
     }
