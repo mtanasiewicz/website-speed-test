@@ -28,6 +28,8 @@ class CreateLoadingTimeBenchmarkCommand
 
     /**
      * CreateLoadingTimeBenchmarkCommand constructor.
+     * @param string $email
+     * @param string $phoneNumber
      * @param string $benchmarkUrl
      * @param array $comparedUrls
      */

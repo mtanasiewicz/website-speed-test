@@ -13,7 +13,7 @@ use App\Benchmark\Domain\Report\Model\Section;
  */
 class FailureSectionFactory
 {
-    private const SECTION_TITLE = 'FAILED BENCHMARKS:';
+    public const SECTION_TITLE = 'FAILED BENCHMARKS:';
 
     /**
      * @param AllTimes $allTimes

@@ -106,7 +106,7 @@ class AllTimes
     public function getTimesTwoTimesFasterThanBenchmark(): array
     {
         return array_filter($this->comparedTimes, function (LoadingTime $comparedTime) {
-            return $this->benchmarkTime->getValue() > ($comparedTime->getValue() / 2);
+            return ($this->benchmarkTime->getValue() / 2) >= $comparedTime->getValue();
         });
     }
 }

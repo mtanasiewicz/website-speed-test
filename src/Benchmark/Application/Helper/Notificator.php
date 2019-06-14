@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Application\Service;
+namespace App\Benchmark\Application\Helper;
 
 use App\Benchmark\Domain\LoadingTime\Model\AllTimes;
 use App\Message\Email\Application\SendEmailCommand;

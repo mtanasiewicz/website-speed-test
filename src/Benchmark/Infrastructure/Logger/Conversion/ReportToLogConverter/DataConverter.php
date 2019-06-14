@@ -15,7 +15,7 @@ class DataConverter
      * @param Data $data
      * @return string
      */
-    public function covert(Data $data): string
+    public function convert(Data $data): string
     {
         return $data->getName() . ': ' . $data->getValue();
     }

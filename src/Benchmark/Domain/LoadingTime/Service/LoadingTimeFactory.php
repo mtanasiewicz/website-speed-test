@@ -5,7 +5,7 @@ namespace App\Benchmark\Domain\LoadingTime\Service;
 
 use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;
 use App\Benchmark\Domain\LoadingTime\Model\LoadingTime;
-use App\Benchmark\Infrastructure\WebConnector;
+use App\Benchmark\Infrastructure\Connection\WebConnectorInterface;
 
 /**
  * Class LoadingTimeFactory
@@ -14,15 +14,15 @@ use App\Benchmark\Infrastructure\WebConnector;
 class LoadingTimeFactory
 {
     /**
-     * @var WebConnector
+     * @var WebConnectorInterface
      */
     private $connector;
 
     /**
      * LoadingTimeFactory constructor.
-     * @param WebConnector $connector
+     * @param WebConnectorInterface $connector
      */
-    public function __construct(WebConnector $connector)
+    public function __construct(WebConnectorInterface $connector)
     {
         $this->connector = $connector;
     }

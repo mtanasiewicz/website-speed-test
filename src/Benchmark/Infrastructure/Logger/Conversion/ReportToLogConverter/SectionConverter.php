@@ -36,7 +36,7 @@ class SectionConverter
     public function convert(Section $section): string
     {
         $texts = array_map(function (Data $data) {
-            return $this->dataConverter->covert($data);
+            return $this->dataConverter->convert($data);
         }, $section->getData());
 
         array_unshift($texts, $section->getTitle());

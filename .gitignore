@@ -2,3 +2,11 @@
 /public/bundles/
 /var/
 /vendor/
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+/docker-compose.yaml
+/.idea/*

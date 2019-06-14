@@ -14,7 +14,7 @@ use function array_filter;
  */
 class FasterThanBenchmarkSectionFactory
 {
-    private const SECTION_NAME = 'Websites that have been faster than the benchmark website: ';
+    public const SECTION_TITLE = 'Websites that have been faster than the benchmark website: ';
 
     /**
      * @param AllTimes $allTimes
@@ -31,6 +31,6 @@ class FasterThanBenchmarkSectionFactory
             return $comparedTime->getValue() < $benchmarkTime->getValue();
         });
 
-        return new Section(self::SECTION_NAME, $fasterTimes);
+        return new Section(self::SECTION_TITLE, $fasterTimes);
     }
 }

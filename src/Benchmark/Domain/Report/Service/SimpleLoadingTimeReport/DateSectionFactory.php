@@ -9,7 +9,7 @@ use DateTime;
 
 class DateSectionFactory
 {
-    private const SECTION_TITLE = 'Report creation date';
+    public const SECTION_TITLE = 'Report creation date';
 
     public function create(DateTime $createdAt): Section
     {

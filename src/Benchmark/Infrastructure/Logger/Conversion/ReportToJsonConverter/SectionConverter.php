@@ -18,7 +18,7 @@ class SectionConverter
     public function convert(Section $section): array
     {
         $data = [
-            $section->getTitle() => [$section->getData()],
+            $section->getTitle() => $section->getData(),
         ];
 
         return $data;
