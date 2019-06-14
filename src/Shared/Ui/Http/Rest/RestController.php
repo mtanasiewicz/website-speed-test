@@ -42,9 +42,25 @@ abstract class RestController extends AbstractFOSRestController
         }
 
         if (!$form->isValid()) {
-            throw new InvalidFormException('form is invalid', 0, $form, null);
+            $message = $this->extractFormErrorMessage($form);
+
+            throw new InvalidFormException('Form is invalid: ' . $message, 0, $form, null);
         }
 
         return $form;
+    }
+
+    /**
+     * @param FormInterface $form
+     * @return string
+     */
+    private function extractFormErrorMessage(FormInterface $form): string
+    {
+        $message = '';
+        foreach ($form->getErrors(true, true) as $formError) {
+            $message .= $formError->getMessage() . ', ';
+        }
+
+        return $message;
     }
 }
