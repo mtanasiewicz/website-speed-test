@@ -44,11 +44,13 @@ class BenchmarkController extends RestController
         );
 
         try{
-            $handler->handle($command);
+            $report = $handler->handle($command);
+
+            return new Response($report);
+            $view = $this->view($report, Response::HTTP_OK);
+            $this->handleView($view);
         } catch (InfrastructureException $e) {
             $this->handleErrorView($e, Response::HTTP_CONFLICT);
         }
-
-
     }
 }

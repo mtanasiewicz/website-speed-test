@@ -5,6 +5,7 @@ namespace App\Benchmark\Application;
 
 use App\Benchmark\Application\Helper\Notificator;
 use App\Benchmark\Domain\LoadingTime\Service\AllTimesFactory;
+use App\Benchmark\Domain\Report\Model\Report;
 use App\Benchmark\Domain\Report\Service\ReportFactory;
 use App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter;
 use App\Benchmark\Infrastructure\Logger\ReportLoggerInterface;
@@ -62,10 +63,10 @@ class CreateLoadingTimeBenchmarkHandler
 
     /**
      * @param CreateLoadingTimeBenchmarkCommand $command
-     * @return string
+     * @return Report
      * @throws InfrastructureException
      */
-    public function handle(CreateLoadingTimeBenchmarkCommand $command): string
+    public function handle(CreateLoadingTimeBenchmarkCommand $command): Report
     {
         $benchmarkUrl = $command->getBenchmarkUrl();
 
@@ -76,6 +77,6 @@ class CreateLoadingTimeBenchmarkHandler
 
         $this->reportLogger->log($report);
 
-        return $this->reportConverter->convert($report);
+        return $report;
     }
 }
