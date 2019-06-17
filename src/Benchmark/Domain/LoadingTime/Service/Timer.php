@@ -42,15 +42,18 @@ class Timer
     }
 
     /**
+     * @param int $precision
      * @return float
      */
-    public function getTimeInMilSeconds(): float
+    public function getTimeInMilSeconds(int $precision = 2): float
     {
         if (0 === $this->stop) {
-            throw new TimerNotStoppedException('Please stop the timer before reading the value');
+            throw new TimerNotStoppedException('Please stop the timer before reading this value');
         }
 
-        return ($this->stop - $this->start) * 100;
+        $milliseconds = ($this->stop - $this->start) * 100;
+
+        return round($milliseconds, $precision);
     }
 
     /**

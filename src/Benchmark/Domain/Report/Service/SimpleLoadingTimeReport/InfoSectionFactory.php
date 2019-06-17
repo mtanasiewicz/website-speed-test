@@ -12,7 +12,7 @@ use App\Benchmark\Domain\Report\Model\Section;
  */
 class InfoSectionFactory
 {
-    public const SECTION_TITLE = 'Benchmark websites times in milliseconds: ';
+    public const SECTION_TITLE = 'Benchmark website times in milliseconds: ';
 
     /**
      * @param AllTimes $allTimes

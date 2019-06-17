@@ -99,15 +99,9 @@ class CreateLoadingTimeBenchmarkHandlerTest extends UnitTestBase
             ->method('log')
             ->with($report);
 
-        $this->reportConverter
-            ->expects($this->once())
-            ->method('convert')
-            ->with($report)
-            ->willReturn('converted-report');
+        $report = $this->createLoadingTimeBenchmarkHandler->handle($command);
 
-        $convertedReport = $this->createLoadingTimeBenchmarkHandler->handle($command);
-
-        $this->assertSame('converted-report', $convertedReport);
+        $this->assertInstanceOf(Report::class, $report);
     }
 
     private function createReport(): Report

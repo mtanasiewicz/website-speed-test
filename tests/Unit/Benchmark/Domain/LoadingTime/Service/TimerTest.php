@@ -31,8 +31,8 @@ class TimerTest extends UnitTestBase
         $timer->stop();
         $stop = $timer->getStop();
 
-        $expected = ($stop - $start) * 100;
-        $this->assertEquals($expected, $timer->getTimeInMilSeconds());
+        $expected = round(($stop - $start) * 100, 10);
+        $this->assertEquals($expected, $timer->getTimeInMilSeconds(10));
     }
 
     public function testThatItThrowsExceptionWhenTimerNotStopped(): void
