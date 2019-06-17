@@ -37,9 +37,6 @@ services:
             $sender: '%env(MAILER_SENDER)%'
 
     # Interface definitions:
-    App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter $jsonConverter:
-        class: App\Benchmark\Infrastructure\Logger\Conversion\ReportToJsonConverter\ReportToJsonConverter
-
     App\Benchmark\Infrastructure\Logger\Conversion\ReportConverter $logConverter:
         class: App\Benchmark\Infrastructure\Logger\Conversion\ReportToLogConverter\ReportToLogConverter
 
