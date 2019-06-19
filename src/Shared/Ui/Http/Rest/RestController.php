@@ -14,6 +14,8 @@ use Throwable;
 
 abstract class RestController extends AbstractFOSRestController
 {
+    private const INVALID_PAYLOAD_MESSAGE = 'No data in payload';
+
     public function handleErrorView(Throwable $viewableException, int $httpCode, array $headers = []): View
     {
         return View::create([
@@ -36,15 +38,22 @@ abstract class RestController extends AbstractFOSRestController
         $form->handleRequest($request);
 
         if (!$form->isSubmitted()) {
-            $form->addError(new FormError('No data in payload'));
+            if(!$request->isMethod('GET')) {
+                $body = $request->getContent();
+                $data = json_decode($body, true);
 
-            throw new InvalidFormException('form not submitted', 0, $form, null);
+                $form->submit($data);
+            } else {
+                $form->addError(new FormError(self::INVALID_PAYLOAD_MESSAGE));
+
+                throw new InvalidFormException(self::INVALID_PAYLOAD_MESSAGE, 0, $form, null);
+            }
         }
 
         if (!$form->isValid()) {
             $message = $this->extractFormErrorMessage($form);
 
-            throw new InvalidFormException('Form is invalid: ' . $message, 0, $form, null);
+            throw new InvalidFormException($message, 0, $form, null);
         }
 
         return $form;
@@ -56,11 +65,6 @@ abstract class RestController extends AbstractFOSRestController
      */
     private function extractFormErrorMessage(FormInterface $form): string
     {
-        $message = '';
-        foreach ($form->getErrors(true, true) as $formError) {
-            $message .= $formError->getMessage() . ', ';
-        }
-
-        return $message;
+        return (string) $form->getErrors(true, false);
     }
 }

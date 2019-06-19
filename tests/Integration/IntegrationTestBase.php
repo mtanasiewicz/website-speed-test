@@ -3,14 +3,24 @@ declare(strict_types=1);
 
 namespace App\Tests\Integration;
 
-use FOS\RestBundle\Tests\Functional\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 class IntegrationTestBase extends WebTestCase
 {
-    public function testCreateBenchmark(): void
+    protected function post(string $uri, $data): Response
     {
         $client = static::createClient();
 
-        $client->request();
+        $client->request(
+            'POST',
+            $uri,
+            ['content-type' => 'application/json'],
+            [],
+            [],
+            json_encode($data)
+        );
+
+        return $client->getResponse();
     }
 }
