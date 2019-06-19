@@ -6,9 +6,9 @@ namespace App\Benchmark\Domain\Exception;
 use App\Shared\Exception\InvalidArgumentException;
 
 /**
- * Class TimerNotStoppedException
+ * Class InvalidTimerException
  * @package App\Benchmark\Domain\Exception
  */
-class TimerNotStoppedException extends InvalidArgumentException
+class InvalidTimerException extends InvalidArgumentException
 {
 }

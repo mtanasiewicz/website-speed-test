@@ -17,14 +17,20 @@ class LoadingTimeFactory
      * @var WebConnectorInterface
      */
     private $connector;
+    /**
+     * @var TimerFactory
+     */
+    private $timerFactory;
 
     /**
      * LoadingTimeFactory constructor.
      * @param WebConnectorInterface $connector
+     * @param TimerFactory $timerFactory
      */
-    public function __construct(WebConnectorInterface $connector)
+    public function __construct(WebConnectorInterface $connector, TimerFactory $timerFactory)
     {
         $this->connector = $connector;
+        $this->timerFactory = $timerFactory;
     }
 
     /**
@@ -34,7 +40,9 @@ class LoadingTimeFactory
      */
     public function create(string $url): LoadingTime
     {
-        $timer = Timer::start();
+        $timer = $this->timerFactory->create();
+
+        $timer->start();
         $this->connector->connect($url);
         $timer->stop();
 
