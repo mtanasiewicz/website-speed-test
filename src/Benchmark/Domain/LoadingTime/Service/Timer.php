@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Domain\LoadingTime\Service;
 
-use App\Benchmark\Domain\Exception\TimerNotStoppedException;
+use App\Benchmark\Domain\Exception\InvalidTimerException;
 
 /**
  * Class Timer
@@ -14,26 +14,15 @@ class Timer
     /**
      * @var float
      */
-    private $start;
+    private $start = 0;
     /**
      * @var float
      */
     private $stop = 0;
 
-    /**
-     * Timer constructor.
-     */
-    private function __construct()
+    public function start(): void
     {
         $this->start = microtime(true);
-    }
-
-    /**
-     * @return Timer
-     */
-    public static function start(): self
-    {
-        return new self();
     }
 
     public function stop(): void
@@ -47,9 +36,7 @@ class Timer
      */
     public function getTimeInMilSeconds(int $precision = 2): float
     {
-        if (0 === $this->stop) {
-            throw new TimerNotStoppedException('Please stop the timer before reading this value');
-        }
+        $this->assertTimerIsValid();
 
         $milliseconds = ($this->stop - $this->start) * 100;
 
@@ -70,5 +57,17 @@ class Timer
     public function getStop(): float
     {
         return $this->stop;
+    }
+
+
+    private function assertTimerIsValid(): void
+    {
+        if ($this->stop === 0) {
+            throw new InvalidTimerException('Please stop the timer before reading this value');
+        }
+
+        if ($this->start === 0) {
+            throw new InvalidTimerException('Please start the timer before reading this value.');
+        }
     }
 }
