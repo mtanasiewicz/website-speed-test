@@ -136,6 +136,9 @@
     "swiftmailer/swiftmailer": {
         "version": "v6.2.1"
     },
+    "symfony/browser-kit": {
+        "version": "v4.3.1"
+    },
     "symfony/cache": {
         "version": "v4.3.0"
     },
@@ -163,6 +166,9 @@
     },
     "symfony/dependency-injection": {
         "version": "v4.3.0"
+    },
+    "symfony/dom-crawler": {
+        "version": "v4.3.1"
     },
     "symfony/dotenv": {
         "version": "v4.3.0"
