@@ -34,4 +34,24 @@ class BenchmarkControllerTest extends IntegrationTestBase
 
         $this->assertTrue($countedData > 0);
     }
+
+    public function testThatItReturnsProperExceptionOnInvalidUrl(): void
+    {
+        $data = [
+            'benchmarkUrl' => 'invalid-url',
+            'comparedUrls' => [
+                'http://www.wp.pl',
+                'http://www.google.pl',
+            ],
+            'email' => 'email@example.com',
+            'phoneNumber' => '555-55-55'
+        ];
+
+        $response = $this->post('/api/benchmark', $data);
+        $errorView = json_decode($response->getContent(), true);
+
+        $this->assertSame('api' , $errorView['error_type']);
+        $this->assertContains( 'invalid-url', $errorView['error_message']);
+        $this->assertEquals(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+    }
 }
