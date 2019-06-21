@@ -1,4 +1,4 @@
-#About
+##About
 I have decided to use feature oriented onion architecture. Code is divided to use cases in the `src/` folder.
 This makes the application scalable and maintainable. The application layer uses command-handler pattern
 to easily separate business logic from controllers.
@@ -20,7 +20,7 @@ implements `App\Benchmark\Domain\Report\Service\ReportFactory`. Than make a new 
 in the application layer.
 
 
-#Set up
+##Set up
 
 Clone the repository, enter the main folder and run:
 
@@ -42,7 +42,7 @@ When containers are up and running, execute:
 docker exec -it speed_php composer install
 ```
 
-#Usage
+##Usage
 
 To create a benchmark make a `POST` request to `http://localhost:7000/api/benchmark`.
 
@@ -51,7 +51,7 @@ If You encounter file permissions problem run:
 docker exec -it speed_php chmod -R 777 /var/www/symfony/var/log
 ```
 
-#Tests
+##Tests
 I decided to test only the Benchmark use case, to save some time. Tests are in the `/tests` folder, and are divided
 to `Unit` and `Integration` tests. To run the tests execute:
 
