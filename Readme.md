@@ -57,5 +57,3 @@ to `Unit` and `Integration` tests. To run the tests execute:
 ```
 docker exec -it speed_php bin/phpunit
 ```
-
-
