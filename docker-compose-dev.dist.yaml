@@ -8,8 +8,6 @@ services:
     volumes:
       - ./:/var/www/symfony:cached
       - ./var/log/symfony:/var/www/symfony/var/log:cached
-    extra_hosts:
-      - "docker-host.localhost:127.0.0.1"
 
   speed_nginx:
     build: ./etc/docker/nginx
