@@ -8,6 +8,7 @@ use App\Benchmark\Application\CreateLoadingTimeBenchmarkHandler;
 use App\Benchmark\Ui\Http\Form\BenchmarkForm;
 use App\Benchmark\Ui\Http\Request\BenchmarkData;
 use App\Shared\Exception\InfrastructureException;
+use App\Shared\Exception\InvalidArgumentException;
 use App\Shared\Ui\Http\Rest\RestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +33,9 @@ class BenchmarkController extends RestController
      */
     public function createBenchmark(Request $request, CreateLoadingTimeBenchmarkHandler $handler): Response
     {
+        try{
         $benchmarkData = new BenchmarkData();
+
 
         $this->handleForm($request, BenchmarkForm::class, $benchmarkData);
 
@@ -43,13 +46,15 @@ class BenchmarkController extends RestController
             $benchmarkData->comparedUrls
         );
 
-        try{
+
             $report = $handler->handle($command);
 
             $view = $this->view($report, Response::HTTP_OK);
             return $this->handleView($view);
         } catch (InfrastructureException $e) {
-            $this->handleErrorView($e, Response::HTTP_CONFLICT);
+            return $this->handleErrorView($e, Response::HTTP_CONFLICT);
+        } catch (InvalidArgumentException $e) {
+            return $this->handleErrorView($e, Response::HTTP_BAD_REQUEST);
         }
     }
 }

@@ -16,12 +16,16 @@ abstract class RestController extends AbstractFOSRestController
 {
     private const INVALID_PAYLOAD_MESSAGE = 'No data in payload';
 
-    public function handleErrorView(Throwable $viewableException, int $httpCode, array $headers = []): View
+    public function handleErrorView(Throwable $viewableException, int $httpCode, array $headers = []): Response
     {
-        return View::create([
+        $view = View::create([
             'error_type'    => 'api',
             'error_message' => $viewableException->getMessage()
         ], $httpCode, $headers);
+
+        $handler = $this->getViewHandler();
+
+        return $handler->handle($view);
     }
 
     public function handleView(View $view): Response
