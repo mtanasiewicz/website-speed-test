@@ -12,11 +12,12 @@ To add new benchmark type, create a new folder for it and make the output model 
 `App\Benchmark\Domain\Report\Model\Data`. This will be further used to create reports.
 
 ####Reports:
-Report converters take models that implement `Data interface` and convert them to the Report. Reports are divided into sections with 
-`App\Benchmark\Domain\Report\Model\Section`. To modify existing report, simply add/remove new sections.
+Report converters take models that implement `Data interface` and convert them to the Report. Reports are divided into 
+`Sections` with `App\Benchmark\Domain\Report\Model\Section`. To modify existing report, simply add/remove new `Sections`.
 
 To create a new Report, add new folder in `App\Benchmark\Domain\Report\Service` with `ReportFactory` that
-implements `App\Benchmark\Domain\Report\Service\ReportFactory`.
+implements `App\Benchmark\Domain\Report\Service\ReportFactory`. Than make a new `Create*BenchmarkCommand` and `Handler` 
+in the application layer.
 
 
 #Set up
