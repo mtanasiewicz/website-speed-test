@@ -46,6 +46,19 @@ docker exec -it speed_php composer install
 
 To create a benchmark make a `POST` request to `http://localhost:7000/api/benchmark`.
 
+Example payload:
+```
+{
+	"email": "email@example.com",
+	"phoneNumber": "555-55-55",
+	"benchmarkUrl": "http://www.wp.pl",
+	"comparedUrls": [
+			"http://www.onet.pl",
+			"http://www.google.com"
+		]
+}
+```
+
 If You encounter file permissions problem run: 
 ```
 docker exec -it speed_php chmod -R 777 /var/www/symfony/var/log
