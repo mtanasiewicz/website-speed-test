@@ -37,8 +37,6 @@ class BenchmarkController extends RestController
     {
         try {
             $benchmarkData = new BenchmarkData();
-
-
             $this->handleForm($request, BenchmarkForm::class, $benchmarkData);
 
             $command = new CreateLoadingTimeBenchmarkCommand(
@@ -49,8 +47,8 @@ class BenchmarkController extends RestController
             );
 
             $report = $handler->handle($command);
-
             $view = $this->view($report, Response::HTTP_OK);
+
             return $this->handleView($view);
         } catch (InfrastructureException $e) {
             return $this->handleErrorView($e, Response::HTTP_CONFLICT);
