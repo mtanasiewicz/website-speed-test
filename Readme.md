@@ -42,6 +42,11 @@ When containers are up and running, execute:
 docker exec -it speed_php composer install
 ```
 
+Finally update your hosts file with:
+```
+127.0.0.1       speed.loc
+```
+
 ## Usage
 
 To create a benchmark make a `POST` request to `http://localhost:7000/api/benchmark`.
