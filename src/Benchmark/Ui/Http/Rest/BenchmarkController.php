@@ -29,23 +29,24 @@ class BenchmarkController extends RestController
      *     name="api_benchmarks_create"
      * )
      *
+     * @param Request $request
+     * @param CreateLoadingTimeBenchmarkHandler $handler
      * @return Response
      */
     public function createBenchmark(Request $request, CreateLoadingTimeBenchmarkHandler $handler): Response
     {
-        try{
-        $benchmarkData = new BenchmarkData();
+        try {
+            $benchmarkData = new BenchmarkData();
 
 
-        $this->handleForm($request, BenchmarkForm::class, $benchmarkData);
+            $this->handleForm($request, BenchmarkForm::class, $benchmarkData);
 
-        $command = new CreateLoadingTimeBenchmarkCommand(
-            $benchmarkData->email,
-            $benchmarkData->phoneNumber,
-            $benchmarkData->benchmarkUrl,
-            $benchmarkData->comparedUrls
-        );
-
+            $command = new CreateLoadingTimeBenchmarkCommand(
+                $benchmarkData->email,
+                $benchmarkData->phoneNumber,
+                $benchmarkData->benchmarkUrl,
+                $benchmarkData->comparedUrls
+            );
 
             $report = $handler->handle($command);
 
