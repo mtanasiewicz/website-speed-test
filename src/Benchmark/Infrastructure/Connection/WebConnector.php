@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Infrastructure\Connection;
 
-use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;
 use App\Benchmark\Domain\Exception\InvalidUrlException;
+use App\Benchmark\Infrastructure\Exception\CouldNotConnectToUrlException;
 
 /**
  * Class WebConnector

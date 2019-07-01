@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Benchmark\Domain\LoadingTime\Service;
 
-use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;
 use App\Benchmark\Domain\LoadingTime\Model\LoadingTime;
 use App\Benchmark\Infrastructure\Connection\WebConnectorInterface;
+use App\Benchmark\Infrastructure\Exception\CouldNotConnectToUrlException;
 
 /**
  * Class LoadingTimeFactory

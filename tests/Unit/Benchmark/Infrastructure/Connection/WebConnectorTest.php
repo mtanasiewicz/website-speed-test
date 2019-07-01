@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Benchmark\Infrastructure\Connection;
 
-use App\Benchmark\Domain\Exception\CouldNotConnectToUrlException;
 use App\Benchmark\Domain\Exception\InvalidUrlException;
 use App\Benchmark\Infrastructure\Connection\WebConnector;
+use App\Benchmark\Infrastructure\Exception\CouldNotConnectToUrlException;
 use App\Tests\Unit\UnitTestBase;
 
 class WebConnectorTest extends UnitTestBase

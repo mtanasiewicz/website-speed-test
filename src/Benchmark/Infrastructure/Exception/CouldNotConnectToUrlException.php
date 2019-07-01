@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Benchmark\Domain\Exception;
+namespace App\Benchmark\Infrastructure\Exception;
 
 use App\Shared\Exception\InfrastructureException;
 
